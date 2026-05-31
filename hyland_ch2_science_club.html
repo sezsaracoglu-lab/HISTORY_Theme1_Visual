@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Psychology Joined the Science Club — Ch.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0e0c;
+    --bg2:#16140f;
+    --panel:#1b1813;
+    --panel2:#211d16;
+    --gold:#c9a96e;
+    --gold-dim:#8f7945;
+    --gold-soft:rgba(201,169,110,.14);
+    --ink:#e9e2d4;
+    --ink-dim:#a89e8a;
+    --line:rgba(201,169,110,.22);
+    --red:#c66;
+    --redbg:rgba(198,102,102,.12);
+    --green:#8aa86a;
+    --greenbg:rgba(138,168,106,.14);
+    --serif:'Cormorant Garamond',serif;
+    --sans:'DM Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    display:flex;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold-soft);color:#fff}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:6px;border:2px solid var(--bg)}
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    width:248px;flex-shrink:0;
+    background:linear-gradient(180deg,#16140f,#100e0a);
+    border-right:1px solid var(--line);
+    padding:34px 22px;
+    position:fixed;height:100vh;
+    display:flex;flex-direction:column;
+    z-index:20;
+  }
+  .brand{font-family:var(--serif);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim)}
+  .brand-title{font-family:var(--serif);font-size:25px;line-height:1.12;color:var(--gold);margin-top:8px;font-weight:600}
+  .brand-sub{font-size:11px;color:var(--ink-dim);margin-top:10px;letter-spacing:.4px;line-height:1.5}
+  .nav{margin-top:42px;display:flex;flex-direction:column;gap:4px}
+  .nav button{
+    background:none;border:none;color:var(--ink-dim);
+    font-family:var(--sans);font-size:14px;text-align:left;
+    padding:13px 16px;border-radius:9px;cursor:pointer;
+    display:flex;align-items:center;gap:13px;letter-spacing:.4px;
+    transition:.2s;
+  }
+  .nav button .ic{font-family:var(--serif);font-size:17px;width:20px;text-align:center;color:var(--gold-dim);transition:.2s}
+  .nav button:hover{background:var(--gold-soft);color:var(--ink)}
+  .nav button.active{background:var(--gold-soft);color:var(--gold)}
+  .nav button.active .ic{color:var(--gold)}
+  .side-foot{margin-top:auto;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold-dim);line-height:1.5;border-top:1px solid var(--line);padding-top:18px}
+
+  /* ---------- MAIN ---------- */
+  main{margin-left:248px;flex:1;padding:46px 56px 90px;max-width:1180px}
+  .view{display:none;animation:fade .5s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-dim)}
+  h1{font-family:var(--serif);font-size:42px;font-weight:600;color:var(--gold);line-height:1.08;margin:10px 0 6px}
+  .lede{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink-dim);max-width:760px;line-height:1.45}
+  .rule{height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin:26px 0 34px}
+
+  /* ---------- OVERVIEW GRID ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:18px}
+  .card{
+    background:linear-gradient(160deg,var(--panel),var(--bg2));
+    border:1px solid var(--line);border-radius:14px;padding:22px 22px 24px;
+    cursor:pointer;transition:.25s;position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,var(--gold-soft),transparent 60%);opacity:0;transition:.25s}
+  .card:hover{transform:translateY(-4px);border-color:var(--gold-dim)}
+  .card:hover::before{opacity:1}
+  .card .num{font-family:var(--serif);font-size:14px;color:var(--gold-dim);letter-spacing:2px}
+  .card h3{font-family:var(--serif);font-size:23px;color:var(--ink);margin:8px 0 8px;font-weight:600;line-height:1.12}
+  .card p{font-size:13px;color:var(--ink-dim);line-height:1.5}
+  .card .go{margin-top:16px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- LESSON ---------- */
+  .lesson-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .lesson-tag{font-family:var(--serif);font-size:15px;color:var(--gold-dim);letter-spacing:2px}
+  .lesson-body{display:grid;grid-template-columns:1.55fr 1fr;gap:38px;align-items:start;margin-top:8px}
+  .diagram{
+    background:radial-gradient(ellipse at 50% 0,#181510,#0f0e0c);
+    border:1px solid var(--line);border-radius:16px;padding:18px;
+    min-height:60vh;display:flex;align-items:center;justify-content:center;
+  }
+  .diagram svg{width:100%;height:auto;display:block}
+  .points{padding-top:6px}
+  .points h4{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:16px}
+  .points ul{list-style:none;display:flex;flex-direction:column;gap:15px}
+  .points li{position:relative;padding-left:26px;font-size:15px;line-height:1.5;color:var(--ink)}
+  .points li::before{content:"◆";position:absolute;left:0;top:1px;color:var(--gold);font-size:11px}
+  .points li b{color:var(--gold);font-weight:600}
+  .hook{
+    margin-top:26px;background:var(--gold-soft);border-left:3px solid var(--gold);
+    border-radius:0 10px 10px 0;padding:16px 18px;
+  }
+  .hook .lbl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+  .hook p{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.4;color:var(--ink)}
+
+  .lesson-nav{display:flex;justify-content:space-between;margin-top:44px;gap:14px}
+  .lesson-nav button{
+    background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);
+    font-family:var(--sans);font-size:13px;padding:12px 22px;border-radius:10px;cursor:pointer;transition:.2s;letter-spacing:.5px;
+  }
+  .lesson-nav button:hover:not(:disabled){border-color:var(--gold);color:var(--gold)}
+  .lesson-nav button:disabled{opacity:.3;cursor:default}
+
+  /* SVG shared text */
+  .d-t{font-family:var(--sans);fill:var(--ink)}
+  .d-g{font-family:var(--sans);fill:var(--gold)}
+  .d-dim{font-family:var(--sans);fill:var(--ink-dim)}
+  .d-serif{font-family:var(--serif);fill:var(--gold)}
+
+  /* ---------- FLASHCARDS ---------- */
+  .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:8px}
+  .filters button,.tool-btn{
+    background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);
+    font-family:var(--sans);font-size:12.5px;padding:8px 16px;border-radius:20px;cursor:pointer;transition:.2s;letter-spacing:.4px;
+  }
+  .filters button:hover,.tool-btn:hover{border-color:var(--gold-dim);color:var(--ink)}
+  .filters button.active{background:var(--gold);color:#1a160e;border-color:var(--gold);font-weight:600}
+  .fc-tools{display:flex;gap:10px;margin:20px 0 6px}
+  .fc-count{font-size:13px;color:var(--ink-dim);margin-left:auto;align-self:center;font-family:var(--serif);font-style:italic;font-size:16px}
+  .fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:24px}
+  .flip{perspective:1400px;height:200px;cursor:pointer}
+  .flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+  .flip.flipped .flip-in{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:22px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+  .front{background:linear-gradient(160deg,var(--panel),var(--bg2))}
+  .back{background:linear-gradient(160deg,var(--panel2),#171307);transform:rotateY(180deg);border-color:var(--gold-dim)}
+  .fc-topic{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px}
+  .front .q{font-family:var(--serif);font-size:21px;line-height:1.25;color:var(--ink)}
+  .back .a{font-size:14px;line-height:1.55;color:var(--ink)}
+  .back .a b{color:var(--gold)}
+  .fc-hint{position:absolute;bottom:12px;right:16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dim);opacity:.7}
+
+  /* ---------- MCQ ---------- */
+  .quiz-intro{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:30px}
+  .scorebox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 24px;font-family:var(--serif)}
+  .scorebox .n{font-size:30px;color:var(--gold);line-height:1}
+  .scorebox .l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim)}
+  .q-block{background:linear-gradient(160deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-bottom:20px}
+  .q-num{font-family:var(--serif);font-size:14px;color:var(--gold-dim);letter-spacing:2px}
+  .q-text{font-family:var(--serif);font-size:21px;line-height:1.3;color:var(--ink);margin:8px 0 18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    background:var(--bg2);border:1px solid var(--line);border-radius:10px;
+    padding:13px 17px;font-size:14.5px;color:var(--ink);cursor:pointer;transition:.18s;
+    display:flex;gap:12px;align-items:flex-start;line-height:1.4;
+  }
+  .opt .k{font-family:var(--serif);color:var(--gold-dim);font-size:16px;flex-shrink:0}
+  .opt:hover:not(.locked){border-color:var(--gold-dim);background:var(--panel2)}
+  .opt.correct{background:var(--greenbg);border-color:var(--green);color:#cfe0b8}
+  .opt.correct .k{color:var(--green)}
+  .opt.wrong{background:var(--redbg);border-color:var(--red);color:#e7b9b9}
+  .opt.wrong .k{color:var(--red)}
+  .opt.locked{cursor:default}
+  .explain{margin-top:16px;font-size:14px;line-height:1.55;color:var(--ink-dim);border-left:3px solid var(--gold-dim);padding:8px 0 8px 16px;display:none}
+  .explain.show{display:block;animation:fade .3s}
+  .explain b{color:var(--gold)}
+  .reset-quiz{margin-top:8px}
+
+  @media(max-width:900px){
+    .sidebar{position:relative;width:100%;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:14px;padding:18px}
+    .brand-sub,.side-foot{display:none}
+    .nav{flex-direction:row;flex-wrap:wrap;margin:0}
+    main{margin-left:0;padding:28px 22px 70px}
+    .lesson-body{grid-template-columns:1fr}
+    body{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div>
+    <div class="brand">Chapter II</div>
+    <div class="brand-title">Joining the<br>Science Club</div>
+    <div class="brand-sub">Hyland · The Origins of Scientific Psychology<br>International Psychology · EUR</div>
+  </div>
+  <nav class="nav" id="nav">
+    <button data-view="overview" class="active"><span class="ic">❧</span>Overview</button>
+    <button data-view="lessons"><span class="ic">✎</span>Lessons</button>
+    <button data-view="flash"><span class="ic">⚄</span>Flashcards</button>
+    <button data-view="mcq"><span class="ic">✓</span>MCQ Exam</button>
+  </nav>
+  <div class="side-foot">"Compromise<br>sometimes works."</div>
+</aside>
+
+<main>
+  <!-- ============ OVERVIEW ============ -->
+  <section class="view active" id="view-overview">
+    <div class="eyebrow">Theme 1 · The Birth of a Science</div>
+    <h1>How Psychology Joined the Science Club</h1>
+    <p class="lede">To be admitted as a science, psychology had to make a compromise — narrowing what it would study so it could measure, falsify, and belong. Eleven lessons trace that journey from the soul to the laboratory.</p>
+    <div class="rule"></div>
+    <div class="grid" id="overview-grid"></div>
+  </section>
+
+  <!-- ============ LESSONS ============ -->
+  <section class="view" id="view-lessons">
+    <div class="lesson-head">
+      <span class="lesson-tag" id="l-tag">Lesson 01</span>
+      <span class="eyebrow" id="l-eyebrow"></span>
+    </div>
+    <h1 id="l-title" style="margin-top:4px"></h1>
+    <p class="lede" id="l-lede"></p>
+    <div class="rule"></div>
+    <div class="lesson-body">
+      <div class="diagram" id="l-diagram"></div>
+      <div>
+        <div class="points">
+          <h4>Key Points</h4>
+          <ul id="l-points"></ul>
+        </div>
+        <div class="hook">
+          <div class="lbl">⚷ Memory Hook</div>
+          <p id="l-hook"></p>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button id="l-prev">← Previous</button>
+      <button id="l-next">Next →</button>
+    </div>
+  </section>
+
+  <!-- ============ FLASHCARDS ============ -->
+  <section class="view" id="view-flash">
+    <div class="eyebrow">Active Recall</div>
+    <h1>Flashcards</h1>
+    <p class="lede">Tap a card to flip. Filter by topic, shuffle the deck, or reset the order.</p>
+    <div class="rule"></div>
+    <div class="filters" id="fc-filters"></div>
+    <div class="fc-tools">
+      <button class="tool-btn" id="fc-shuffle">⤮ Shuffle</button>
+      <button class="tool-btn" id="fc-reset">↺ Reset</button>
+      <span class="fc-count" id="fc-count"></span>
+    </div>
+    <div class="fc-grid" id="fc-grid"></div>
+  </section>
+
+  <!-- ============ MCQ ============ -->
+  <section class="view" id="view-mcq">
+    <div class="eyebrow">Exam Practice</div>
+    <h1>Multiple-Choice Exam</h1>
+    <p class="lede">Twenty-one exam-style questions. Choose an answer for instant feedback and the reasoning behind it.</p>
+    <div class="rule"></div>
+    <div class="quiz-intro">
+      <div class="scorebox"><div class="n" id="score-n">0 / 21</div><div class="l">Score</div></div>
+      <button class="tool-btn reset-quiz" id="quiz-reset">↺ Reset Exam</button>
+    </div>
+    <div id="quiz"></div>
+  </section>
+</main>
+
+<script>
+/* ===================== LESSON DATA ===================== */
+const LESSONS = [
+{
+  id:1, eyebrow:"The Compromise", title:"Joining the Science Club",
+  lede:"Psychology was not always a science. To join the club, it had to prove why it deserved membership — and the 19th-century club had its own rules.",
+  card:"Why the scientific label matters, and the price of admission.",
+  svg:`<svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="34" text-anchor="middle" class="d-serif" font-size="22">The Price of Admission</text>
+    <!-- OLD box -->
+    <rect x="34" y="80" width="180" height="150" rx="12" fill="none" stroke="#8f7945" stroke-width="1.5"/>
+    <text x="124" y="108" text-anchor="middle" class="d-g" font-size="15" font-weight="600">OLD Psychology</text>
+    <text x="124" y="138" text-anchor="middle" class="d-dim" font-size="12.5">"Study of the soul"</text>
+    <text x="124" y="160" text-anchor="middle" class="d-dim" font-size="12.5">Paranormal · spirits</text>
+    <text x="124" y="182" text-anchor="middle" class="d-dim" font-size="12.5">Unfalsifiable</text>
+    <text x="124" y="208" text-anchor="middle" class="d-t" font-size="12.5" font-style="italic">myth &amp; religion</text>
+    <!-- gate -->
+    <line x1="290" y1="60" x2="290" y2="250" stroke="#c9a96e" stroke-width="1" stroke-dasharray="4 5"/>
+    <rect x="252" y="120" width="76" height="70" rx="10" fill="rgba(201,169,110,.14)" stroke="#c9a96e" stroke-width="1.5"/>
+    <text x="290" y="148" text-anchor="middle" class="d-g" font-size="11" font-weight="600">RESTRICT</text>
+    <text x="290" y="164" text-anchor="middle" class="d-g" font-size="11" font-weight="600">SUBJECT</text>
+    <text x="290" y="180" text-anchor="middle" class="d-g" font-size="11" font-weight="600">MATTER</text>
+    <text x="290" y="250" text-anchor="middle" class="d-dim" font-size="11">the compromise gate</text>
+    <!-- arrow -->
+    <line x1="214" y1="155" x2="250" y2="155" stroke="#c9a96e" stroke-width="2" marker-end="url(#ar)"/>
+    <line x1="330" y1="155" x2="364" y2="155" stroke="#c9a96e" stroke-width="2" marker-end="url(#ar)"/>
+    <!-- NEW box -->
+    <rect x="366" y="80" width="200" height="150" rx="12" fill="rgba(201,169,110,.06)" stroke="#c9a96e" stroke-width="1.5"/>
+    <text x="466" y="108" text-anchor="middle" class="d-g" font-size="15" font-weight="600">SCIENCE CLUB</text>
+    <text x="466" y="138" text-anchor="middle" class="d-dim" font-size="12.5">Measurable</text>
+    <text x="466" y="160" text-anchor="middle" class="d-dim" font-size="12.5">Falsifiable claims</text>
+    <text x="466" y="182" text-anchor="middle" class="d-dim" font-size="12.5">Fact-establishing</text>
+    <text x="466" y="208" text-anchor="middle" class="d-t" font-size="12.5" font-style="italic">membership granted</text>
+    <!-- inductivism band -->
+    <rect x="34" y="300" width="532" height="120" rx="12" fill="#16140f" stroke="#8f7945" stroke-width="1"/>
+    <text x="300" y="328" text-anchor="middle" class="d-serif" font-size="17">The 19th-Century Club's Logic</text>
+    <text x="160" y="364" text-anchor="middle" class="d-g" font-size="13" font-weight="600">INDUCTIVISM</text>
+    <text x="160" y="386" text-anchor="middle" class="d-dim" font-size="11.5">Establish the FACTS first</text>
+    <text x="160" y="404" text-anchor="middle" class="d-dim" font-size="11.5">(data-driven, cumulative)</text>
+    <line x1="300" y1="350" x2="300" y2="410" stroke="#8f7945" stroke-width="1" stroke-dasharray="3 4"/>
+    <text x="440" y="364" text-anchor="middle" class="d-t" font-size="13" font-weight="600">vs MODERN</text>
+    <text x="440" y="386" text-anchor="middle" class="d-dim" font-size="11.5">Test falsifiable THEORIES</text>
+    <text x="440" y="404" text-anchor="middle" class="d-dim" font-size="11.5">(came later)</text>
+    <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+  </svg>`,
+  points:[
+    "Modern science = <b>falsifiable hypotheses</b> tested by evidence; modern psychology meets that bar.",
+    "It was not always so — 200 years ago psychology was <b>not</b> considered a science, which is why the label matters so much.",
+    "Psychology joined the science club of the <b>19th century</b>, not today's — a club focused on establishing facts.",
+    "The dominant logic was <b>inductivism</b>: gather data, build facts, science is cumulative.",
+    "Membership required showing <b>why you deserve to belong</b> — and that meant compromise."
+  ],
+  hook:"To enter a club, you cut your coat to fit their door. Psychology shrank itself to be let in."
+},
+{
+  id:2, eyebrow:"Mind vs Body", title:"Cartesian Dualism &amp; the Soul",
+  lede:"Descartes' diplomatic solution freed science from the Church — but as a side-effect, it locked the mind outside the realm of science.",
+  card:"Descartes splits the world in two, and the mind falls on the wrong side.",
+  svg:`<svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="34" text-anchor="middle" class="d-serif" font-size="22">Two Substances</text>
+    <text x="300" y="58" text-anchor="middle" class="d-dim" font-size="12" font-style="italic">Descartes' diplomatic split (17th c. France)</text>
+    <!-- divider -->
+    <line x1="300" y1="80" x2="300" y2="360" stroke="#c9a96e" stroke-width="1.5"/>
+    <circle cx="300" cy="90" r="16" fill="#1b1813" stroke="#c9a96e" stroke-width="1.5"/>
+    <text x="300" y="95" text-anchor="middle" class="d-g" font-size="13" font-weight="700">R</text>
+    <text x="300" y="78" text-anchor="middle" class="d-dim" font-size="9">Descartes</text>
+    <!-- MIND -->
+    <rect x="40" y="110" width="232" height="170" rx="12" fill="rgba(201,169,110,.05)" stroke="#8f7945" stroke-width="1.5"/>
+    <text x="156" y="140" text-anchor="middle" class="d-g" font-size="17" font-weight="600">MIND substance</text>
+    <text x="156" y="170" text-anchor="middle" class="d-t" font-size="13">Jurisdiction: the Church ✝</text>
+    <text x="156" y="196" text-anchor="middle" class="d-dim" font-size="12.5">soul · psyche</text>
+    <text x="156" y="218" text-anchor="middle" class="d-dim" font-size="12.5">unfalsifiable</text>
+    <text x="156" y="252" text-anchor="middle" class="d-red" fill="#c66" font-size="13" font-weight="600">✗ outside science</text>
+    <!-- BODY -->
+    <rect x="328" y="110" width="232" height="170" rx="12" fill="rgba(201,169,110,.05)" stroke="#8f7945" stroke-width="1.5"/>
+    <text x="444" y="140" text-anchor="middle" class="d-g" font-size="17" font-weight="600">BODY substance</text>
+    <text x="444" y="170" text-anchor="middle" class="d-t" font-size="13">Jurisdiction: scientists ⚗</text>
+    <text x="444" y="196" text-anchor="middle" class="d-dim" font-size="12.5">matter · machine</text>
+    <text x="444" y="218" text-anchor="middle" class="d-dim" font-size="12.5">measurable</text>
+    <text x="444" y="252" text-anchor="middle" fill="#8aa86a" font-size="13" font-weight="600">✓ science freed</text>
+    <!-- consequence -->
+    <rect x="120" y="320" width="360" height="92" rx="12" fill="#16140f" stroke="#c9a96e" stroke-width="1"/>
+    <text x="300" y="348" text-anchor="middle" class="d-serif" font-size="16">Cartesian Dualism — the cost</text>
+    <text x="300" y="374" text-anchor="middle" class="d-dim" font-size="12.5">Goal achieved: science independent of religion.</text>
+    <text x="300" y="396" text-anchor="middle" class="d-t" font-size="12.5">Side-effect: the study of MIND left out of science.</text>
+  </svg>`,
+  points:[
+    "<b>Descartes</b> wanted to free science from the Roman Catholic Church without provoking it.",
+    "His solution: two substances — a <b>mind</b> (Church's domain) and a <b>body</b> (scientists' domain).",
+    "This established science as <b>independent of religion</b> — the diplomatic win.",
+    "Negative consequence: the <b>mind</b> was left <b>outside</b> the realm of real science.",
+    "<b>Psychology</b> = Greek for 'study of the soul' (Psyche married Eros) — bound up with myth and religion."
+  ],
+  hook:"Descartes drew a line down the middle of the world. Science got the body; the Church got the mind — and psychology was stuck on the Church's side."
+},
+{
+  id:3, eyebrow:"The Paranormal", title:"Spiritualism &amp; the Break",
+  lede:"As faith in old religion waned, spiritualism rose — and psychology was tangled up with séances and ouija boards. To become a science, it had to cut that cord.",
+  card:"Ouija boards, mediums, and the clean break that created 'new psychology'.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="32" text-anchor="middle" class="d-serif" font-size="21">The Ouija Illusion — &amp; the Break</text>
+    <!-- ouija board -->
+    <ellipse cx="150" cy="155" rx="118" ry="78" fill="#16140f" stroke="#8f7945" stroke-width="1.5"/>
+    <text x="150" y="120" text-anchor="middle" class="d-dim" font-size="11" letter-spacing="3">A B C D E F</text>
+    <text x="150" y="200" text-anchor="middle" class="d-dim" font-size="11" letter-spacing="3">U V W X Y Z</text>
+    <circle cx="150" cy="155" r="15" fill="rgba(201,169,110,.18)" stroke="#c9a96e" stroke-width="1.5"/>
+    <text x="150" y="159" text-anchor="middle" class="d-g" font-size="10">glass</text>
+    <!-- ideomotor chain -->
+    <text x="430" y="92" text-anchor="middle" class="d-g" font-size="13" font-weight="600">The real mechanism</text>
+    <rect x="318" y="106" width="224" height="34" rx="8" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="430" y="128" text-anchor="middle" class="d-t" font-size="12">Finger rests on glass</text>
+    <line x1="430" y1="140" x2="430" y2="156" stroke="#c9a96e" stroke-width="1.5" marker-end="url(#ar3)"/>
+    <rect x="318" y="158" width="224" height="34" rx="8" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="430" y="180" text-anchor="middle" class="d-t" font-size="12">Unconscious muscle push</text>
+    <line x1="430" y1="192" x2="430" y2="208" stroke="#c9a96e" stroke-width="1.5" marker-end="url(#ar3)"/>
+    <rect x="318" y="210" width="224" height="34" rx="8" fill="rgba(201,169,110,.12)" stroke="#c9a96e" stroke-width="1.2"/>
+    <text x="430" y="232" text-anchor="middle" class="d-g" font-size="12">"Spirit" spells the wish</text>
+    <!-- timeline -->
+    <line x1="60" y1="300" x2="540" y2="300" stroke="#8f7945" stroke-width="1.5"/>
+    <circle cx="150" cy="300" r="5" fill="#c9a96e"/>
+    <text x="150" y="288" text-anchor="middle" class="d-g" font-size="12">1882</text>
+    <text x="150" y="324" text-anchor="middle" class="d-dim" font-size="10.5">Society for Psychical</text>
+    <text x="150" y="338" text-anchor="middle" class="d-dim" font-size="10.5">Research (Cambridge)</text>
+    <circle cx="430" cy="300" r="5" fill="#c9a96e"/>
+    <text x="430" y="288" text-anchor="middle" class="d-g" font-size="12">1901</text>
+    <text x="430" y="324" text-anchor="middle" class="d-dim" font-size="10.5">British Psychological</text>
+    <text x="430" y="338" text-anchor="middle" class="d-dim" font-size="10.5">Society (London)</text>
+    <!-- break -->
+    <rect x="120" y="380" width="360" height="72" rx="12" fill="#16140f" stroke="#c9a96e" stroke-width="1"/>
+    <text x="300" y="408" text-anchor="middle" class="d-serif" font-size="16">The clean break ✂</text>
+    <text x="300" y="432" text-anchor="middle" class="d-dim" font-size="12.5">Psychology must split from the paranormal → "new psychology"</text>
+    <defs><marker id="ar3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c9a96e"/></marker></defs>
+  </svg>`,
+  points:[
+    "Loss of faith in traditional religion bred <b>spiritualism</b> — belief in a universal soul, contacted via mediums.",
+    "A universal soul, like God, is <b>unfalsifiable</b> — so psychology stayed tangled with non-science.",
+    "The <b>ouija board</b> shows the ideomotor effect: people push the glass unaware they are doing it.",
+    "<b>Society for Psychical Research</b> (Cambridge, 1882); <b>British Psychological Society</b> (London, 1901).",
+    "Modern psychology begins with a deliberate <b>break from the paranormal</b> — calling itself 'new psychology'."
+  ],
+  hook:"The glass moves because YOU move it. New psychology was born the moment it stopped blaming the ghost."
+},
+{
+  id:4, eyebrow:"Psychophysics I", title:"Weber &amp; the Measured Sensation",
+  lede:"Ernst Weber asked the radical question: can a sensation be measured? His two-point threshold and the JND gave psychology its first law.",
+  card:"Two-point threshold, the JND, and Weber's constant ratio.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="32" text-anchor="middle" class="d-serif" font-size="21">Weber's Two-Point Threshold</text>
+    <!-- arm with two regions -->
+    <rect x="48" y="70" width="220" height="40" rx="20" fill="#16140f" stroke="#8f7945" stroke-width="1.2"/>
+    <text x="158" y="62" text-anchor="middle" class="d-dim" font-size="11">HAND — sensitive</text>
+    <circle cx="135" cy="90" r="4" fill="#c9a96e"/><circle cx="150" cy="90" r="4" fill="#c9a96e"/>
+    <text x="190" y="94" text-anchor="middle" class="d-g" font-size="10">felt as 2</text>
+    <rect x="48" y="140" width="220" height="40" rx="20" fill="#16140f" stroke="#8f7945" stroke-width="1.2"/>
+    <text x="158" y="132" text-anchor="middle" class="d-dim" font-size="11">BACK — less sensitive</text>
+    <circle cx="138" cy="160" r="4" fill="#c9a96e"/><circle cx="146" cy="160" r="4" fill="#c9a96e"/>
+    <text x="200" y="164" text-anchor="middle" class="d-t" font-size="10">felt as 1</text>
+    <text x="158" y="210" text-anchor="middle" class="d-dim" font-size="11" font-style="italic">measured with the aesthesiometer (compass)</text>
+    <!-- JND demo -->
+    <text x="430" y="62" text-anchor="middle" class="d-g" font-size="13" font-weight="600">Why the JND is a ratio</text>
+    <rect x="320" y="78" width="220" height="60" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="430" y="100" text-anchor="middle" class="d-t" font-size="12">1 kg vs 1.5 kg</text>
+    <text x="430" y="122" text-anchor="middle" fill="#8aa86a" font-size="12">✓ easy to tell apart</text>
+    <rect x="320" y="148" width="220" height="60" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="430" y="170" text-anchor="middle" class="d-t" font-size="12">50 kg vs 50.5 kg</text>
+    <text x="430" y="192" text-anchor="middle" fill="#c66" font-size="12">✗ feel identical</text>
+    <!-- law -->
+    <rect x="90" y="250" width="420" height="80" rx="12" fill="rgba(201,169,110,.08)" stroke="#c9a96e" stroke-width="1.4"/>
+    <text x="300" y="282" text-anchor="middle" class="d-serif" font-size="24" fill="#c9a96e">JND / Stimulus intensity = Constant</text>
+    <text x="300" y="312" text-anchor="middle" class="d-dim" font-size="12.5">Weber's Law — the ratio holds whatever the intensity</text>
+    <!-- worked -->
+    <rect x="150" y="350" width="300" height="86" rx="12" fill="#16140f" stroke="#8f7945" stroke-width="1"/>
+    <text x="300" y="376" text-anchor="middle" class="d-g" font-size="13" font-weight="600">Worked example</text>
+    <text x="300" y="400" text-anchor="middle" class="d-t" font-size="12.5">JND = 0.2 kg at 1 kg → 0.2/1 = 0.2</text>
+    <text x="300" y="422" text-anchor="middle" class="d-t" font-size="12.5">So at 50 kg, JND ≈ 1 kg (1/50 = 0.2)</text>
+  </svg>`,
+  points:[
+    "<b>Ernst Weber</b> (1795–1878) studied sensory nerves, then sensations themselves — calling it <b>sensory psychophysiology</b>.",
+    "<b>Two-point threshold</b>: the smallest gap at which two touches feel like two, not one — measured with the <b>aesthesiometer</b>.",
+    "Sensitivity varies across the body — the <b>hand</b> is far more sensitive than the <b>back</b>.",
+    "The <b>JND</b> (just noticeable difference) is the smallest detectable change in a stimulus.",
+    "<b>Weber's Law</b>: JND ÷ stimulus intensity = a constant ratio, whatever the intensity."
+  ],
+  hook:"Add a feather to a coin and you notice; add a feather to a brick and you don't. The difference you notice depends on what's already there."
+},
+{
+  id:5, eyebrow:"Psychophysics II", title:"Fechner &amp; the Logarithm of Mind",
+  lede:"Fechner named the field 'psychophysics', refined the methods, and showed sensation grows as the logarithm of the stimulus — a quantitative law of the mind.",
+  card:"Two new methods, Fechner's logarithmic law, and the golden ratio.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="32" text-anchor="middle" class="d-serif" font-size="21">Fechner's Logarithmic Law</text>
+    <!-- curve -->
+    <line x1="80" y1="240" x2="80" y2="70" stroke="#8f7945" stroke-width="1.2"/>
+    <line x1="80" y1="240" x2="320" y2="240" stroke="#8f7945" stroke-width="1.2"/>
+    <text x="60" y="155" text-anchor="middle" class="d-dim" font-size="11" transform="rotate(-90 60 155)">Sensation (S)</text>
+    <text x="200" y="262" text-anchor="middle" class="d-dim" font-size="11">Stimulus intensity (R)</text>
+    <path d="M80,238 Q140,140 320,92" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+    <text x="250" y="120" class="d-g" font-size="14">S = k · log R</text>
+    <text x="250" y="138" class="d-dim" font-size="10.5">diminishing returns</text>
+    <!-- methods -->
+    <rect x="350" y="62" width="210" height="80" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="455" y="84" text-anchor="middle" class="d-g" font-size="12.5" font-weight="600">Method 1: Forced choice</text>
+    <text x="455" y="104" text-anchor="middle" class="d-dim" font-size="11">"Which line is longer?"</text>
+    <text x="455" y="122" text-anchor="middle" class="d-dim" font-size="11">No "same" allowed → JND</text>
+    <rect x="350" y="156" width="210" height="80" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="455" y="178" text-anchor="middle" class="d-g" font-size="12.5" font-weight="600">Method 2: Adjustment</text>
+    <text x="455" y="198" text-anchor="middle" class="d-dim" font-size="11">Match one stimulus to another</text>
+    <text x="455" y="216" text-anchor="middle" class="d-dim" font-size="11">Avg error = JND</text>
+    <!-- golden ratio -->
+    <text x="300" y="290" text-anchor="middle" class="d-serif" font-size="17">Experimental Aesthetics — the Golden Ratio</text>
+    <rect x="120" y="306" width="60" height="60" fill="none" stroke="#8f7945" stroke-width="1.4"/>
+    <text x="150" y="382" text-anchor="middle" class="d-dim" font-size="10.5">1 : 1 square</text>
+    <rect x="240" y="306" width="97" height="60" fill="rgba(201,169,110,.12)" stroke="#c9a96e" stroke-width="1.8"/>
+    <text x="288" y="382" text-anchor="middle" class="d-g" font-size="10.5">1 : 1.62 ★</text>
+    <rect x="400" y="306" width="150" height="60" fill="none" stroke="#8f7945" stroke-width="1.4"/>
+    <text x="475" y="382" text-anchor="middle" class="d-dim" font-size="10.5">1 : 2.5 elongated</text>
+    <text x="300" y="416" text-anchor="middle" class="d-dim" font-size="12" font-style="italic">"Most beautiful" = ratio of short:long ≈ 1 : 1.62</text>
+    <text x="300" y="442" text-anchor="middle" class="d-t" font-size="11.5">Fechner = father of experimental aesthetics · precursor to signal detection theory</text>
+  </svg>`,
+  points:[
+    "<b>Gustav Fechner</b> (1801–1887) renamed the field <b>psychophysics</b> — the name still used today.",
+    "He added two methods: <b>forced choice</b> (no 'same' allowed) and the <b>method of adjustment / average error</b>.",
+    "Forced choice sidesteps differing <b>criteria</b> — a precursor to <b>signal detection theory</b>.",
+    "<b>Fechner's Law</b>: S = k · log R — sensation grows as the <b>logarithm</b> of stimulus intensity.",
+    "He founded <b>experimental aesthetics</b>, claiming the <b>golden ratio</b> (1 : 1.62) is most beautiful."
+  ],
+  hook:"Fechner turned 'how strong does it feel?' into a logarithm. The mind, it seemed, could be written as an equation."
+},
+{
+  id:6, eyebrow:"Philosophy of Mind", title:"Associationism: Coalescence vs Brick Wall",
+  lede:"Where do thoughts come from? British associationists argued ideas combine — but do they fuse into something new, or stay forever separate?",
+  card:"Hartley, the Mills, and two rival theories of how ideas combine.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" text-anchor="middle" class="d-serif" font-size="21">Two Theories of Combining Ideas</text>
+    <!-- COALESCENCE -->
+    <rect x="34" y="56" width="252" height="190" rx="12" fill="rgba(201,169,110,.05)" stroke="#c9a96e" stroke-width="1.4"/>
+    <text x="160" y="82" text-anchor="middle" class="d-g" font-size="15" font-weight="600">COALESCENCE</text>
+    <text x="160" y="100" text-anchor="middle" class="d-dim" font-size="11">ideas FUSE into something new</text>
+    <circle cx="120" cy="140" r="22" fill="rgba(201,169,110,.18)" stroke="#c9a96e"/>
+    <text x="120" y="144" text-anchor="middle" class="d-t" font-size="11">zinc</text>
+    <circle cx="200" cy="140" r="22" fill="rgba(201,169,110,.18)" stroke="#c9a96e"/>
+    <text x="200" y="144" text-anchor="middle" class="d-t" font-size="11">copper</text>
+    <line x1="160" y1="168" x2="160" y2="182" stroke="#c9a96e" stroke-width="1.5" marker-end="url(#ar6)"/>
+    <ellipse cx="160" cy="206" rx="40" ry="22" fill="rgba(201,169,110,.28)" stroke="#c9a96e"/>
+    <text x="160" y="210" text-anchor="middle" class="d-g" font-size="11" font-weight="600">BRONZE</text>
+    <text x="160" y="240" text-anchor="middle" class="d-dim" font-size="10.5">Hartley · lemonade · → Gestalt</text>
+    <!-- BRICK WALL -->
+    <rect x="314" y="56" width="252" height="190" rx="12" fill="rgba(201,169,110,.05)" stroke="#8f7945" stroke-width="1.4"/>
+    <text x="440" y="82" text-anchor="middle" class="d-g" font-size="15" font-weight="600">BRICK WALL</text>
+    <text x="440" y="100" text-anchor="middle" class="d-dim" font-size="11">ideas stay SEPARATE</text>
+    <rect x="378" y="120" width="58" height="26" fill="rgba(201,169,110,.14)" stroke="#8f7945"/>
+    <rect x="444" y="120" width="58" height="26" fill="rgba(201,169,110,.14)" stroke="#8f7945"/>
+    <rect x="411" y="150" width="58" height="26" fill="rgba(201,169,110,.14)" stroke="#8f7945"/>
+    <rect x="345" y="150" width="58" height="26" fill="rgba(201,169,110,.14)" stroke="#8f7945"/>
+    <rect x="477" y="150" width="58" height="26" fill="rgba(201,169,110,.14)" stroke="#8f7945"/>
+    <text x="440" y="200" text-anchor="middle" class="d-dim" font-size="11">each idea = one brick, intact</text>
+    <text x="440" y="240" text-anchor="middle" class="d-dim" font-size="10.5">James Mill (mind = machine) · → Behaviourism</text>
+    <!-- lineage -->
+    <text x="300" y="288" text-anchor="middle" class="d-serif" font-size="16">The Lineage</text>
+    <rect x="220" y="300" width="160" height="34" rx="8" fill="#16140f" stroke="#8f7945"/>
+    <text x="300" y="322" text-anchor="middle" class="d-t" font-size="12">Locke — tabula rasa</text>
+    <line x1="300" y1="334" x2="300" y2="350" stroke="#8f7945" stroke-width="1" marker-end="url(#ar6)"/>
+    <rect x="90" y="356" width="190" height="34" rx="8" fill="#16140f" stroke="#8f7945"/>
+    <text x="185" y="378" text-anchor="middle" class="d-t" font-size="11.5">Hartley (biological)</text>
+    <rect x="320" y="356" width="190" height="34" rx="8" fill="#16140f" stroke="#8f7945"/>
+    <text x="415" y="378" text-anchor="middle" class="d-t" font-size="11.5">James Mill (mechanism)</text>
+    <rect x="210" y="412" width="180" height="40" rx="8" fill="#16140f" stroke="#c9a96e"/>
+    <text x="300" y="430" text-anchor="middle" class="d-g" font-size="11.5">J.S. Mill — switched sides</text>
+    <text x="300" y="446" text-anchor="middle" class="d-dim" font-size="10">(chemistry: copper+zinc→bronze)</text>
+    <line x1="415" y1="390" x2="340" y2="412" stroke="#8f7945" stroke-width="1" marker-end="url(#ar6)"/>
+    <defs><marker id="ar6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c9a96e"/></marker></defs>
+  </svg>`,
+  points:[
+    "<b>Locke</b> (1632–1704): the newborn mind is a <b>tabula rasa</b> (blank slate) — emphasis on environment over heredity.",
+    "<b>Hartley</b> used a <b>biological</b> model (vibrating particles); ideas merge — the <b>coalescence</b> hypothesis.",
+    "<b>James Mill</b> used a <b>mechanism</b> model; ideas stay separate — the <b>brick wall</b> hypothesis.",
+    "<b>J.S. Mill</b> first agreed with the brick wall, then switched — persuaded by <b>chemistry</b> (copper + zinc → bronze).",
+    "Coalescence → <b>Gestalt</b>; brick wall → <b>Behaviourism</b>. The truth is neither purely one nor the other."
+  ],
+  hook:"Lemonade: is it still 'lemon + sugar', or a brand-new taste? Your answer reveals whether your mind is a brick wall or a melting pot."
+},
+{
+  id:7, eyebrow:"Localisation of Function", title:"Neuroscience: Broca, Wernicke, Gage",
+  lede:"If specific brain regions do specific jobs, then mind is caused by brain — and brain can be studied by natural science. Three famous cases proved it.",
+  card:"The brain map that linked thought to tissue.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" text-anchor="middle" class="d-serif" font-size="21">Localisation of Function</text>
+    <!-- brain silhouette -->
+    <path d="M150,230 C120,150 200,90 300,95 C400,90 470,140 470,210 C475,260 440,300 380,308 L370,330 L350,308 C260,316 175,300 150,230 Z" fill="#16140f" stroke="#8f7945" stroke-width="1.6"/>
+    <!-- Broca frontal -->
+    <ellipse cx="395" cy="200" rx="34" ry="26" fill="rgba(201,169,110,.22)" stroke="#c9a96e" stroke-width="1.3"/>
+    <text x="395" y="198" text-anchor="middle" class="d-g" font-size="11" font-weight="600">Broca</text>
+    <text x="395" y="212" text-anchor="middle" class="d-dim" font-size="9">frontal</text>
+    <!-- Wernicke temporal -->
+    <ellipse cx="250" cy="250" rx="40" ry="24" fill="rgba(201,169,110,.18)" stroke="#c9a96e" stroke-width="1.3"/>
+    <text x="250" y="248" text-anchor="middle" class="d-g" font-size="11" font-weight="600">Wernicke</text>
+    <text x="250" y="262" text-anchor="middle" class="d-dim" font-size="9">L. temporal</text>
+    <!-- prefrontal Gage -->
+    <ellipse cx="430" cy="150" rx="28" ry="22" fill="rgba(201,169,110,.12)" stroke="#8f7945" stroke-width="1.3"/>
+    <text x="430" y="148" text-anchor="middle" class="d-g" font-size="10" font-weight="600">Gage</text>
+    <text x="430" y="160" text-anchor="middle" class="d-dim" font-size="8.5">prefrontal</text>
+    <!-- legend cards -->
+    <rect x="34" y="330" width="172" height="120" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="120" y="354" text-anchor="middle" class="d-g" font-size="13" font-weight="600">Broca (1861)</text>
+    <text x="120" y="376" text-anchor="middle" class="d-dim" font-size="11">"tan, tan" patient</text>
+    <text x="120" y="394" text-anchor="middle" class="d-t" font-size="11">understood all,</text>
+    <text x="120" y="410" text-anchor="middle" class="d-t" font-size="11">could not SPEAK</text>
+    <text x="120" y="434" text-anchor="middle" class="d-dim" font-size="10.5" font-style="italic">→ speech production</text>
+    <rect x="214" y="330" width="172" height="120" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="300" y="354" text-anchor="middle" class="d-g" font-size="13" font-weight="600">Wernicke</text>
+    <text x="300" y="376" text-anchor="middle" class="d-dim" font-size="11">spoke fluently but</text>
+    <text x="300" y="394" text-anchor="middle" class="d-t" font-size="11">speech was</text>
+    <text x="300" y="410" text-anchor="middle" class="d-t" font-size="11">MEANINGLESS</text>
+    <text x="300" y="434" text-anchor="middle" class="d-dim" font-size="10.5" font-style="italic">→ speech + meaning</text>
+    <rect x="394" y="330" width="172" height="120" rx="10" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="480" y="354" text-anchor="middle" class="d-g" font-size="13" font-weight="600">Phineas Gage</text>
+    <text x="480" y="376" text-anchor="middle" class="d-dim" font-size="11">iron rod through head</text>
+    <text x="480" y="394" text-anchor="middle" class="d-t" font-size="11">survived, but</text>
+    <text x="480" y="410" text-anchor="middle" class="d-t" font-size="11">PERSONALITY changed</text>
+    <text x="480" y="434" text-anchor="middle" class="d-dim" font-size="10.5" font-style="italic">→ "no longer Gage"</text>
+  </svg>`,
+  points:[
+    "Doctors compared diseased and healthy brains, expecting <b>localised abnormalities</b> — so they looked for them in the brain too.",
+    "<b>Broca</b> (1824–1880): the 'tan, tan' patient — a frontal-lobe lesion → <b>Broca's area</b>, language production.",
+    "<b>Wernicke</b> (1848–1905): fluent but meaningless speech — left temporal damage → connects <b>speech with meaning</b>.",
+    "<b>Phineas Gage</b>: an iron rod damaged the <b>prefrontal lobe</b>; he survived but his personality changed.",
+    "Together: <b>localisation of function</b> — if mind is caused by brain, mind can be studied by natural science."
+  ],
+  hook:"Broca = can't SPEAK (front). Wernicke = speaks NONSENSE (side). Gage = different PERSON (front-most). The brain has departments."
+},
+{
+  id:8, eyebrow:"The Founder", title:"Wundt &amp; the First Laboratory",
+  lede:"Wilhelm Wundt fused physiology, philosophy and psychophysics into a discipline — and in 1879 at Leipzig opened the first psychology laboratory.",
+  card:"1879, Leipzig, and the two psychologies Wundt envisioned.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" text-anchor="middle" class="d-serif" font-size="21">Wundt's Synthesis (Leipzig, 1879)</text>
+    <!-- three strands merging -->
+    <rect x="30" y="60" width="160" height="50" rx="9" fill="#1b1813" stroke="#8f7945"/>
+    <text x="110" y="82" text-anchor="middle" class="d-t" font-size="12">Sensory physiology</text>
+    <text x="110" y="99" text-anchor="middle" class="d-dim" font-size="10">Weber · Fechner · Helmholtz</text>
+    <rect x="30" y="125" width="160" height="50" rx="9" fill="#1b1813" stroke="#8f7945"/>
+    <text x="110" y="147" text-anchor="middle" class="d-t" font-size="12">Philosophy of mind</text>
+    <text x="110" y="164" text-anchor="middle" class="d-dim" font-size="10">higher mental processes</text>
+    <rect x="30" y="190" width="160" height="50" rx="9" fill="#1b1813" stroke="#8f7945"/>
+    <text x="110" y="212" text-anchor="middle" class="d-t" font-size="12">Medical findings</text>
+    <text x="110" y="229" text-anchor="middle" class="d-dim" font-size="10">brain ↔ cognition</text>
+    <path d="M190,85 C240,90 250,140 285,148" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+    <path d="M190,150 L285,150" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+    <path d="M190,215 C240,210 250,160 285,152" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+    <circle cx="330" cy="150" r="44" fill="rgba(201,169,110,.16)" stroke="#c9a96e" stroke-width="1.6"/>
+    <text x="330" y="146" text-anchor="middle" class="d-g" font-size="13" font-weight="700">NEW</text>
+    <text x="330" y="164" text-anchor="middle" class="d-g" font-size="13" font-weight="700">PSYCHOLOGY</text>
+    <!-- two psychologies -->
+    <line x1="330" y1="194" x2="330" y2="220" stroke="#c9a96e" stroke-width="1.5"/>
+    <line x1="160" y1="240" x2="500" y2="240" stroke="#c9a96e" stroke-width="1"/>
+    <line x1="200" y1="220" x2="200" y2="262" stroke="#c9a96e" stroke-width="1" marker-end="url(#ar8)"/>
+    <line x1="460" y1="220" x2="460" y2="262" stroke="#8f7945" stroke-width="1" marker-end="url(#ar8)"/>
+    <rect x="60" y="270" width="280" height="170" rx="12" fill="rgba(201,169,110,.06)" stroke="#c9a96e" stroke-width="1.4"/>
+    <text x="200" y="296" text-anchor="middle" class="d-g" font-size="14" font-weight="600">Experimental Psychology</text>
+    <text x="200" y="320" text-anchor="middle" class="d-t" font-size="12">✓ scientific (the experiment)</text>
+    <text x="200" y="344" text-anchor="middle" class="d-dim" font-size="11.5">immediate experience only</text>
+    <text x="200" y="366" text-anchor="middle" class="d-dim" font-size="11.5">low-level perception</text>
+    <text x="200" y="388" text-anchor="middle" class="d-dim" font-size="11.5">PURE, not applied</text>
+    <text x="200" y="416" text-anchor="middle" class="d-t" font-size="11.5" font-style="italic">paranormal excluded</text>
+    <rect x="356" y="270" width="220" height="170" rx="12" fill="#16140f" stroke="#8f7945" stroke-width="1.2"/>
+    <text x="466" y="296" text-anchor="middle" class="d-g" font-size="14" font-weight="600">Völkerpsychologie</text>
+    <text x="466" y="320" text-anchor="middle" class="d-t" font-size="12">"folk psychology"</text>
+    <text x="466" y="344" text-anchor="middle" class="d-dim" font-size="11.5">culture · myth · religion</text>
+    <text x="466" y="366" text-anchor="middle" class="d-dim" font-size="11.5">language · law · society</text>
+    <text x="466" y="392" text-anchor="middle" fill="#c66" font-size="11.5">✗ non-experimental</text>
+    <text x="466" y="416" text-anchor="middle" class="d-t" font-size="11.5" font-style="italic">~ modern anthropology</text>
+    <defs><marker id="ar8" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c9a96e"/></marker></defs>
+  </svg>`,
+  points:[
+    "<b>Wundt</b> (1832–1920) trained in medicine, worked with <b>Helmholtz</b> (nerve-conduction speed, colour vision).",
+    "He fused three strands: <b>sensory physiology</b>, <b>philosophy of mind</b>, and <b>medical/brain findings</b>.",
+    "In <b>1879 at Leipzig</b> he opened the first psychology lab and named the field <b>'new psychology'</b>.",
+    "He split psychology in two: <b>experimental</b> (scientific) and <b>Völkerpsychologie</b> (folk — non-experimental).",
+    "He defined psychology as a <b>pure</b> science and excluded the <b>paranormal</b> from his institute."
+  ],
+  hook:"1879, Leipzig — write it down. Wundt poured three streams (body, mind, brain) into one lab, then split the result in two."
+},
+{
+  id:9, eyebrow:"What Could Be Studied", title:"Immediate vs Mediate Experience",
+  lede:"Wundt argued only immediate experience — raw sensation before interpretation — could be studied experimentally, accessed by trained inner perception.",
+  card:"Raw sensation vs interpreted meaning, and the rules of inner perception.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" text-anchor="middle" class="d-serif" font-size="21">Two Ways to Meet a Stimulus</text>
+    <!-- stimulus -->
+    <rect x="250" y="56" width="100" height="40" rx="9" fill="rgba(201,169,110,.14)" stroke="#c9a96e" stroke-width="1.4"/>
+    <text x="300" y="80" text-anchor="middle" class="d-g" font-size="13">A stool ⌐</text>
+    <line x1="270" y1="96" x2="170" y2="128" stroke="#c9a96e" stroke-width="1.3" marker-end="url(#ar9)"/>
+    <line x1="330" y1="96" x2="430" y2="128" stroke="#8f7945" stroke-width="1.3" marker-end="url(#ar9)"/>
+    <!-- immediate -->
+    <rect x="40" y="134" width="230" height="150" rx="12" fill="rgba(201,169,110,.06)" stroke="#c9a96e" stroke-width="1.4"/>
+    <text x="155" y="160" text-anchor="middle" class="d-g" font-size="14" font-weight="600">IMMEDIATE</text>
+    <text x="155" y="180" text-anchor="middle" class="d-dim" font-size="11">raw, before interpretation</text>
+    <text x="155" y="208" text-anchor="middle" class="d-t" font-size="12">"a flat plane on</text>
+    <text x="155" y="226" text-anchor="middle" class="d-t" font-size="12">three cylinders,</text>
+    <text x="155" y="244" text-anchor="middle" class="d-t" font-size="12">of a certain colour"</text>
+    <text x="155" y="272" text-anchor="middle" fill="#8aa86a" font-size="12" font-weight="600">✓ can be studied</text>
+    <!-- mediate -->
+    <rect x="330" y="134" width="230" height="150" rx="12" fill="#16140f" stroke="#8f7945" stroke-width="1.2"/>
+    <text x="445" y="160" text-anchor="middle" class="d-g" font-size="14" font-weight="600">MEDIATE</text>
+    <text x="445" y="180" text-anchor="middle" class="d-dim" font-size="11">filtered by knowledge</text>
+    <text x="445" y="216" text-anchor="middle" class="d-t" font-size="12">"a stool —</text>
+    <text x="445" y="234" text-anchor="middle" class="d-t" font-size="12">something to sit on"</text>
+    <text x="445" y="272" text-anchor="middle" fill="#c66" font-size="12" font-weight="600">✗ not experimental</text>
+    <!-- inner perception rules -->
+    <rect x="60" y="306" width="480" height="148" rx="12" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="300" y="332" text-anchor="middle" class="d-serif" font-size="16">Rules of Inner Perception (innere Wahrnehmung)</text>
+    <text x="86" y="360" class="d-t" font-size="11.5">① Observer is properly TRAINED</text>
+    <text x="320" y="360" class="d-t" font-size="11.5">② Knows when stimulus comes</text>
+    <text x="86" y="386" class="d-t" font-size="11.5">③ In a state of "strained attention"</text>
+    <text x="320" y="386" class="d-t" font-size="11.5">④ Stimulus REPEATED for certainty</text>
+    <text x="86" y="412" class="d-g" font-size="11.5">⑤ Stimulus VARIED → effect noted (the experiment)</text>
+    <text x="300" y="440" text-anchor="middle" class="d-dim" font-size="11" font-style="italic">Rigour + training made introspection look scientific</text>
+    <defs><marker id="ar9" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c9a96e"/></marker></defs>
+  </svg>`,
+  points:[
+    "<b>Immediate experience</b>: the raw reaction to a stimulus, independent of prior knowledge — the only thing Wundt thought experimentable.",
+    "<b>Mediate experience</b>: the reaction filtered by knowledge ('a stool, for sitting on') — like most of physics and chemistry.",
+    "The artist analogy: paint the brick as <b>shapes and colours</b> (immediate), not the felt idea of 'brickness' (mediate).",
+    "Wundt used <b>inner perception</b> (not ordinary introspection) — five strict rules, the fifth being to <b>vary the stimulus</b>.",
+    "This made psychology 'special': it has access to immediate experience that other sciences lack."
+  ],
+  hook:"See a stool, or see 'a flat plane on three cylinders'? Wundt could only let science study the second — the raw, untranslated view."
+},
+{
+  id:10, eyebrow:"The Periodic Table of Mind", title:"Elements of Consciousness",
+  lede:"Modelled on chemistry, Wundt aimed to break consciousness into elements — sensations and feelings — and find the laws that connect them.",
+  card:"Sensations, the 3-D theory of feeling, and association vs apperception.",
+  svg:`<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" text-anchor="middle" class="d-serif" font-size="21">The Elements of Consciousness</text>
+    <text x="300" y="52" text-anchor="middle" class="d-dim" font-size="12" font-style="italic">a psychological "periodic table"</text>
+    <!-- sensations -->
+    <rect x="34" y="70" width="252" height="120" rx="12" fill="rgba(201,169,110,.06)" stroke="#c9a96e" stroke-width="1.3"/>
+    <text x="160" y="94" text-anchor="middle" class="d-g" font-size="14" font-weight="600">SENSATIONS</text>
+    <text x="160" y="116" text-anchor="middle" class="d-dim" font-size="11.5">modality-specific (5 senses)</text>
+    <text x="160" y="138" text-anchor="middle" class="d-dim" font-size="11.5">"out there" — refer to an event</text>
+    <text x="160" y="170" text-anchor="middle" class="d-t" font-size="11">touch · sight · sound · taste · smell</text>
+    <!-- feelings 3D -->
+    <rect x="314" y="70" width="252" height="120" rx="12" fill="rgba(201,169,110,.06)" stroke="#c9a96e" stroke-width="1.3"/>
+    <text x="440" y="94" text-anchor="middle" class="d-g" font-size="14" font-weight="600">FEELINGS</text>
+    <text x="440" y="112" text-anchor="middle" class="d-dim" font-size="11">not "out there" · 3 dimensions</text>
+    <text x="350" y="138" class="d-t" font-size="10.5">• pleasurable ↔ unpleasurable</text>
+    <text x="350" y="158" class="d-t" font-size="10.5">• exciting ↔ depressing</text>
+    <text x="350" y="178" class="d-t" font-size="10.5">• relaxing ↔ straining</text>
+    <!-- connections -->
+    <text x="300" y="226" text-anchor="middle" class="d-serif" font-size="16">How elements connect</text>
+    <rect x="40" y="244" width="250" height="180" rx="12" fill="#1b1813" stroke="#8f7945" stroke-width="1"/>
+    <text x="165" y="270" text-anchor="middle" class="d-g" font-size="13" font-weight="600">ASSOCIATION</text>
+    <text x="165" y="290" text-anchor="middle" class="d-dim" font-size="11">passive · automatic</text>
+    <text x="165" y="314" text-anchor="middle" class="d-t" font-size="11.5">"black" → "white"</text>
+    <text x="165" y="336" text-anchor="middle" class="d-dim" font-size="10.5">springs to mind by itself</text>
+    <text x="165" y="372" text-anchor="middle" class="d-dim" font-size="11">no attention needed</text>
+    <text x="165" y="406" text-anchor="middle" class="d-t" font-size="11" font-style="italic">passive link</text>
+    <rect x="310" y="244" width="250" height="180" rx="12" fill="#16140f" stroke="#c9a96e" stroke-width="1.2"/>
+    <text x="435" y="270" text-anchor="middle" class="d-g" font-size="13" font-weight="600">APPERCEPTION</text>
+    <text x="435" y="290" text-anchor="middle" class="d-dim" font-size="11">active · effortful</text>
+    <text x="435" y="314" text-anchor="middle" class="d-t" font-size="11.5">"12" → say "15" (+3)</text>
+    <text x="435" y="336" text-anchor="middle" class="d-dim" font-size="10.5">requires mental effort</text>
+    <text x="435" y="372" text-anchor="middle" class="d-g" font-size="11">needs ATTENTION + intention</text>
+    <text x="435" y="406" text-anchor="middle" class="d-t" font-size="11" font-style="italic">→ VOLUNTARISM</text>
+  </svg>`,
+  points:[
+    "Wundt's three <b>goals</b>: analyse consciousness into <b>elements</b>, find how they connect, find the <b>laws</b> of connection.",
+    "He modelled this on <b>chemistry's periodic table</b> — a purely <b>inductive</b>, data-driven approach.",
+    "Two elements: <b>sensations</b> (modality-specific, 'out there') and <b>feelings</b> (a <b>3-dimensional</b> theory).",
+    "Feeling dimensions: pleasurable/unpleasurable, exciting/depressing, relaxing/straining.",
+    "Connections are <b>association</b> (passive, automatic) or <b>apperception</b> (active, needs attention) → <b>voluntarism</b>."
+  ],
+  hook:"Say 'black' and 'white' jumps out — that's association. Add 3 to a number and you have to work — that's apperception. Effort is the tell."
+},
+{
+  id:11, eyebrow:"The Verdict", title:"Wundt's Legacy &amp; the Masterstroke",
+  lede:"Was Wundt the father of psychology, or a convenient story historians chose? Either way, his compromise let psychology join — then expand.",
+  card:"Two interpretations of Wundt, and why the compromise worked.",
+  svg:`<svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" text-anchor="middle" class="d-serif" font-size="21">"Father of Psychology" — Two Readings</text>
+    <!-- interp 1 -->
+    <rect x="34" y="56" width="252" height="150" rx="12" fill="rgba(201,169,110,.06)" stroke="#c9a96e" stroke-width="1.3"/>
+    <text x="160" y="82" text-anchor="middle" class="d-g" font-size="14" font-weight="600">Interpretation 1</text>
+    <text x="160" y="100" text-anchor="middle" class="d-dim" font-size="11">"He earned it"</text>
+    <text x="160" y="126" text-anchor="middle" class="d-t" font-size="11.5">Defined the discipline</text>
+    <text x="160" y="146" text-anchor="middle" class="d-t" font-size="11.5">Brilliant lecturer + promoter</text>
+    <text x="160" y="166" text-anchor="middle" class="d-t" font-size="11.5">Trained labs worldwide</text>
+    <text x="160" y="190" text-anchor="middle" class="d-dim" font-size="11" font-style="italic">reputation deserved</text>
+    <!-- interp 2 -->
+    <rect x="314" y="56" width="252" height="150" rx="12" fill="#16140f" stroke="#8f7945" stroke-width="1.2"/>
+    <text x="440" y="82" text-anchor="middle" class="d-g" font-size="14" font-weight="600">Interpretation 2</text>
+    <text x="440" y="100" text-anchor="middle" class="d-dim" font-size="11">"Historians chose him"</text>
+    <text x="440" y="126" text-anchor="middle" class="d-t" font-size="11.5">A later reconstruction</text>
+    <text x="440" y="146" text-anchor="middle" class="d-t" font-size="11.5">Need for a neat start point</text>
+    <text x="440" y="166" text-anchor="middle" class="d-t" font-size="11.5">One of several founders</text>
+    <text x="440" y="190" text-anchor="middle" class="d-dim" font-size="11" font-style="italic">a good story</text>
+    <!-- masterstroke flow -->
+    <text x="300" y="244" text-anchor="middle" class="d-serif" font-size="16">Why the Compromise Was a Masterstroke</text>
+    <rect x="50" y="262" width="150" height="60" rx="10" fill="#1b1813" stroke="#8f7945"/>
+    <text x="125" y="288" text-anchor="middle" class="d-t" font-size="12">RESTRICT</text>
+    <text x="125" y="306" text-anchor="middle" class="d-dim" font-size="10.5">drop higher processes</text>
+    <line x1="200" y1="292" x2="225" y2="292" stroke="#c9a96e" stroke-width="1.6" marker-end="url(#ar11)"/>
+    <rect x="227" y="262" width="150" height="60" rx="10" fill="rgba(201,169,110,.12)" stroke="#c9a96e"/>
+    <text x="302" y="288" text-anchor="middle" class="d-g" font-size="12" font-weight="600">JOIN the club</text>
+    <text x="302" y="306" text-anchor="middle" class="d-dim" font-size="10.5">accepted as science</text>
+    <line x1="377" y1="292" x2="402" y2="292" stroke="#c9a96e" stroke-width="1.6" marker-end="url(#ar11)"/>
+    <rect x="404" y="262" width="150" height="60" rx="10" fill="#1b1813" stroke="#8f7945"/>
+    <text x="479" y="288" text-anchor="middle" class="d-t" font-size="12">EXPAND later</text>
+    <text x="479" y="306" text-anchor="middle" class="d-dim" font-size="10.5">reclaim what was cut</text>
+    <!-- closing -->
+    <rect x="120" y="350" width="360" height="86" rx="12" fill="rgba(201,169,110,.08)" stroke="#c9a96e" stroke-width="1.3"/>
+    <text x="300" y="382" text-anchor="middle" class="d-serif" font-size="19" fill="#c9a96e">"Compromise sometimes works."</text>
+    <text x="300" y="410" text-anchor="middle" class="d-dim" font-size="11.5">Narrow to get in — then widen once you belong.</text>
+    <defs><marker id="ar11" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c9a96e"/></marker></defs>
+  </svg>`,
+  points:[
+    "<b>Interpretation 1</b>: Wundt defined the discipline, was a superb communicator, and trained students who founded labs worldwide.",
+    "<b>Interpretation 2</b>: his fame is a <b>later reconstruction</b> — historians wanted a neat starting point.",
+    "Either way, Wundt was <b>pivotal</b> in psychology becoming a science.",
+    "By <b>restricting</b> the subject matter he let psychology <b>join</b> — then it could later <b>expand</b> to reclaim Völkerpsychologie.",
+    "The life-lesson: <b>flexibility and compromise</b> can be an effective way to influence others and achieve your aims."
+  ],
+  hook:"Shrink to fit through the door, then stretch back out once you're inside. Wundt's compromise was the strategic key to the whole club."
+}
+];
+
+/* ===================== FLASHCARD DATA ===================== */
+const TOPICS = ["Foundations","Psychophysics","Philosophy","Neuroscience","Wundt"];
+const CARDS = [
+  {t:"Foundations",q:"What is the modern definition of science?",a:"A body of <b>hypotheses that are falsifiable</b> through evidence — and modern psychology meets that criterion."},
+  {t:"Foundations",q:"What was the dominant logic of 19th-century science?",a:"<b>Inductivism</b> — establishing facts first rather than testing theories. Science was seen as data-driven and cumulative."},
+  {t:"Foundations",q:"Why does the 'scientific' label matter so much to psychologists?",a:"Because psychology was <b>not always considered a science</b>; it had to earn its membership in the science club."},
+  {t:"Foundations",q:"What does 'psychology' mean in Greek?",a:"The <b>study of the soul</b>. Psyche was a human who became a goddess of the soul and married Eros."},
+  {t:"Philosophy",q:"What was Descartes' solution to the Church–science conflict?",a:"Two substances: a <b>mind</b> (Church's jurisdiction) and a <b>body</b> (scientists' jurisdiction). Known as <b>Cartesian dualism</b>."},
+  {t:"Philosophy",q:"What was the negative consequence of Cartesian dualism for psychology?",a:"It left the study of the <b>mind outside the realm of science</b>."},
+  {t:"Foundations",q:"What is spiritualism, and why was it unfalsifiable?",a:"The belief in a <b>universal soul</b> manifesting as paranormal phenomena. Like the concept of God, it cannot be falsified."},
+  {t:"Foundations",q:"What psychological mechanism explains the ouija board?",a:"The <b>ideomotor effect</b>: people unconsciously push the glass themselves, spelling out what they wish the spirit would say."},
+  {t:"Foundations",q:"When and where was the Society for Psychical Research founded?",a:"<b>Cambridge, England, in 1882</b>, to investigate claims of the paranormal."},
+  {t:"Foundations",q:"When and where was the British Psychological Society founded?",a:"<b>London, in 1901.</b>"},
+  {t:"Foundations",q:"What break marks the start of modern ('new') psychology?",a:"A clear <b>break from the paranormal</b> and its association with religion/spiritualism."},
+  {t:"Psychophysics",q:"What did Ernst Weber call his field of study?",a:"<b>Sensory psychophysiology</b> — measuring how nerve stimulation gives rise to sensations."},
+  {t:"Psychophysics",q:"What is the two-point threshold?",a:"The smallest distance at which two points touching the skin are felt as <b>two rather than one</b>; measured with an aesthesiometer."},
+  {t:"Psychophysics",q:"What is a JND (just noticeable difference)?",a:"The <b>smallest difference</b> between two stimuli that a person can reliably detect."},
+  {t:"Psychophysics",q:"State Weber's Law.",a:"<b>JND / stimulus intensity = a constant.</b> The ratio stays roughly the same whatever the intensity."},
+  {t:"Psychophysics",q:"Who named the field 'psychophysics'?",a:"<b>Gustav Fechner</b> (1801–1887), continuing and extending Weber's work."},
+  {t:"Psychophysics",q:"State Fechner's Law.",a:"<b>S = k · log R</b> — sensation (S) equals a constant times the logarithm of stimulus intensity (R)."},
+  {t:"Psychophysics",q:"What two methods did Fechner add?",a:"(1) <b>Forced choice</b> — must say which is bigger, no 'same'; (2) <b>method of adjustment / average error</b>."},
+  {t:"Psychophysics",q:"What later science is Fechner a precursor to?",a:"<b>Signal detection theory</b> — his forced-choice method addressed differing criteria between people."},
+  {t:"Psychophysics",q:"What is the golden ratio, per Fechner's aesthetics work?",a:"A short-to-long side ratio of <b>1 : 1.62</b>, claimed to be the most beautiful. Fechner = father of experimental aesthetics."},
+  {t:"Psychophysics",q:"Why did Weber and Fechner make quantitative predictions?",a:"They were <b>copying physics</b> of the time, which used mathematical equations. (Weber's brother was a physicist.)"},
+  {t:"Philosophy",q:"What is the tabula rasa, and who proposed it?",a:"The mind as a <b>blank slate</b> at birth, proposed by <b>John Locke</b>. It emphasises environment over heredity."},
+  {t:"Philosophy",q:"What is the coalescence hypothesis?",a:"Hartley's view that ideas <b>combine to form entirely new ideas</b> (like copper + zinc → bronze). Leads to Gestalt."},
+  {t:"Philosophy",q:"What is the brick wall hypothesis?",a:"James Mill's view that ideas <b>stay separate</b>, like bricks in a wall. The mind is a machine. Leads to behaviourism."},
+  {t:"Philosophy",q:"Why did J.S. Mill change his mind about the brick wall?",a:"Because of evidence from <b>chemistry</b>: combining substances (copper + zinc) creates an entirely new one (bronze)."},
+  {t:"Neuroscience",q:"What did Broca discover, and where?",a:"A patient who could only say 'tan' had a lesion in the <b>frontal lobe — Broca's area</b>, responsible for speech production."},
+  {t:"Neuroscience",q:"What did Wernicke discover?",a:"A patient with fluent but <b>meaningless speech</b> had damage to the left temporal lobe — connecting speech with meaning."},
+  {t:"Neuroscience",q:"What does the Phineas Gage case demonstrate?",a:"Damage to the <b>prefrontal lobe</b> changed his personality ('no longer Gage') though he physically recovered."},
+  {t:"Neuroscience",q:"What is localisation of function?",a:"The idea that <b>different parts of the brain do different things</b> — supporting the view that brain causes mind."},
+  {t:"Wundt",q:"When and where did Wundt found the first psychology laboratory?",a:"<b>1879, in Leipzig.</b>"},
+  {t:"Wundt",q:"Which three strands did Wundt integrate?",a:"(a) <b>sensory physiology</b>, (b) <b>philosophy of mind</b>, and (c) <b>medical findings</b> linking cognition to the brain."},
+  {t:"Wundt",q:"What were Wundt's two kinds of psychology?",a:"<b>Experimental psychology</b> (scientific) and <b>Völkerpsychologie</b> (folk psychology — culture/religion, non-experimental)."},
+  {t:"Wundt",q:"Distinguish immediate from mediate experience.",a:"<b>Immediate</b> = raw sensation before interpretation (experimentable). <b>Mediate</b> = filtered by knowledge ('a stool')."},
+  {t:"Wundt",q:"What did Wundt call his form of introspection?",a:"<b>Inner perception</b> (innere Wahrnehmung) — focusing on the sensation itself, requiring lengthy training."},
+  {t:"Wundt",q:"What are Wundt's two elements of consciousness?",a:"<b>Sensations</b> (modality-specific, 'out there') and <b>feelings</b> (a three-dimensional theory)."},
+  {t:"Wundt",q:"What are the three dimensions of feeling?",a:"<b>Pleasurable/unpleasurable, exciting/depressing, relaxing/straining.</b>"},
+  {t:"Wundt",q:"Distinguish association from apperception.",a:"<b>Association</b> = passive, automatic link (no attention). <b>Apperception</b> = active link requiring attention/intention → voluntarism."},
+  {t:"Wundt",q:"Was Wundt a dualist or a monist?",a:"A <b>monist</b> — one physical substance with two kinds of causality (psychophysical parallelism). Not a dualist."},
+  {t:"Wundt",q:"What was Wundt's 'strategic masterstroke'?",a:"By <b>restricting</b> psychology's subject matter he let it join the science club — after which it could expand again."}
+];
+
+/* ===================== MCQ DATA ===================== */
+const QUIZ = [
+  {q:"According to the chapter, what defines modern science?",
+   o:["Use of expensive laboratory equipment","Hypotheses that are falsifiable through evidence","Agreement among a majority of experts","The study of physical matter only"],c:1,
+   e:"Modern science consists of <b>falsifiable hypotheses</b> tested by evidence — a criterion modern psychology meets."},
+  {q:"Which logic dominated the 19th-century science that psychology joined?",
+   o:["Deductive theory-testing","Falsificationism","Inductivism — establishing facts","Statistical hypothesis testing"],c:2,
+   e:"The 19th-century club focused on <b>inductivism</b> — establishing facts first. Theory-testing and statistics came later."},
+  {q:"What was the chief negative consequence of Cartesian dualism for psychology?",
+   o:["It made the body unstudyable","It left the mind outside the realm of science","It abolished the concept of the soul","It merged science with religion"],c:1,
+   e:"By assigning the <b>mind</b> to the Church and the <b>body</b> to scientists, Descartes left the study of mind outside science."},
+  {q:"The movement of the glass on a ouija board is best explained by:",
+   o:["Genuine spirit contact","Magnetic fields in the table","Unconscious self-generated muscle movements","Vibrations from speech"],c:2,
+   e:"The <b>ideomotor effect</b>: participants push the glass without awareness, spelling out their own wishes."},
+  {q:"What is the two-point threshold?",
+   o:["The minimum weight a person can lift","The smallest gap at which two touches feel like two, not one","The loudest sound before pain","The number of senses humans possess"],c:1,
+   e:"Weber measured the smallest distance at which two skin contacts are felt as <b>two rather than one</b>, using an aesthesiometer."},
+  {q:"Weber's Law states that:",
+   o:["Sensation equals stimulus squared","JND divided by stimulus intensity is a constant","All senses have equal thresholds","Sensation is the log of the stimulus"],c:1,
+   e:"<b>JND / stimulus intensity = constant.</b> (The log relationship is Fechner's later extension.)"},
+  {q:"Which equation is Fechner's Law?",
+   o:["JND / R = k","S = k × log R","R = k × S²","S = R + k"],c:1,
+   e:"<b>S = k · log R</b>: sensation equals a constant times the logarithm of stimulus intensity — an extension of Weber's law."},
+  {q:"Fechner's forced-choice method was an early precursor to which modern science?",
+   o:["Behaviourism","Signal detection theory","Psychoanalysis","Neuroimaging"],c:1,
+   e:"By removing the 'same' option, it tackled differing <b>criteria</b> between observers — the basis of <b>signal detection theory</b>."},
+  {q:"Why did Weber and Fechner state their laws quantitatively rather than qualitatively?",
+   o:["They were trained statisticians","They were copying the physics of the time","Their universities required it","Qualitative methods were illegal"],c:1,
+   e:"They modelled their work on <b>nineteenth-century physics</b>, which used mathematical equations. They did not use statistical testing."},
+  {q:"The tabula rasa, proposed by John Locke, holds that:",
+   o:["Certain ideas are innate, like fear of spiders","The mind at birth is a blank slate filled by experience","The soul resides in the heart","Ideas can never combine"],c:1,
+   e:"The <b>blank slate</b> view emphasises the environment over heredity — relevant to the nature–nurture debate."},
+  {q:"Which pair correctly links the hypothesis to the later movement it inspired?",
+   o:["Coalescence → Behaviourism; Brick wall → Gestalt","Coalescence → Gestalt; Brick wall → Behaviourism","Both → Psychoanalysis","Both → Humanism"],c:1,
+   e:"<b>Coalescence</b> (ideas fuse) underlies <b>Gestalt</b>; the <b>brick wall</b> (ideas stay separate) underlies <b>behaviourism</b>."},
+  {q:"What persuaded J.S. Mill to abandon the brick wall hypothesis?",
+   o:["His father's instructions","Evidence from chemistry (e.g. copper + zinc → bronze)","Wundt's experiments","Religious conviction"],c:1,
+   e:"Chemistry showed combined substances form <b>entirely new ones</b>, supporting coalescence over the brick wall view."},
+  {q:"Broca's patient (who said only 'tan') had damage that revealed:",
+   o:["The temporal lobe links speech with meaning","The frontal lobe (Broca's area) controls speech production","The brain is only a cooling device","Personality lives in the heart"],c:1,
+   e:"The lesion was in the <b>frontal lobe — Broca's area</b>, responsible for producing speech. The patient understood but could not speak."},
+  {q:"The case of Phineas Gage is famous for demonstrating that:",
+   o:["The brain cannot recover from injury","Prefrontal damage can change personality","Speech requires the temporal lobe","Vibrating particles cause pain"],c:1,
+   e:"Gage recovered physically but his <b>personality changed</b> ('no longer Gage') — consistent with <b>prefrontal</b> damage."},
+  {q:"Wundt's 'new psychology' integrated all of the following EXCEPT:",
+   o:["Sensory physiology","Philosophy of mind","Medical/brain findings","Parapsychology of the paranormal"],c:3,
+   e:"Wundt deliberately <b>excluded the paranormal</b> from his institute, integrating physiology, philosophy of mind, and brain findings."},
+  {q:"What did Wundt call the non-experimental study of culture, myth and religion?",
+   o:["Experimental psychology","Völkerpsychologie (folk psychology)","Psychophysics","Apperception"],c:1,
+   e:"<b>Völkerpsychologie</b> studied higher cultural processes non-experimentally — work Wundt later called the most satisfying of his life."},
+  {q:"In Wundt's system, 'immediate experience' refers to:",
+   o:["The interpreted meaning of an object","The raw reaction to a stimulus before interpretation","Memory of a past stimulus","Emotional response to art"],c:1,
+   e:"<b>Immediate experience</b> is the unmediated sensation (e.g. shapes and colours), the only part Wundt thought experimentable."},
+  {q:"Wundt's position on the mind–body problem is best described as:",
+   o:["Dualist — two separate substances","Monist — one substance, two kinds of causality","Spiritualist","Behaviourist"],c:1,
+   e:"Wundt was a <b>monist</b>: one physical substance manifesting two causalities — his <b>psychophysical parallelism</b>."},
+  {q:"Which best distinguishes apperception from association?",
+   o:["Apperception is passive; association is active","Apperception requires attention/intention; association is automatic","They are identical processes","Association needs lengthy training"],c:1,
+   e:"<b>Apperception</b> is active and needs attention (e.g. add 3 to a number); <b>association</b> is passive and automatic (black→white). This led to <b>voluntarism</b>."},
+  {q:"Wundt modelled his 'elements of consciousness' approach on which science?",
+   o:["Astronomy","Chemistry (the periodic table)","Geology","Botany"],c:1,
+   e:"He aimed for a <b>psychological periodic table</b>, cataloguing the elements of mind — a purely inductive approach."},
+  {q:"According to the chapter, Wundt's 'strategic masterstroke' was that he:",
+   o:["Invented statistics for psychology","Restricted psychology so it could join science, then it could expand","Proved the existence of the soul","Rejected all of Weber's work"],c:1,
+   e:"By <b>restricting</b> the subject matter, psychology was accepted as a science — after which it could expand to reclaim what was cut. 'Compromise sometimes works.'"}
+];
+
+/* ===================== APP LOGIC ===================== */
+const views = ['overview','lessons','flash','mcq'];
+function show(v){
+  views.forEach(x=>document.getElementById('view-'+x).classList.toggle('active',x===v));
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));
+  document.querySelector('main').scrollTo(0,0);window.scrollTo(0,0);
+}
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>show(b.dataset.view));
+
+/* Overview grid */
+const og=document.getElementById('overview-grid');
+LESSONS.forEach((l,i)=>{
+  const d=document.createElement('div');d.className='card';
+  d.innerHTML=`<div class="num">LESSON ${String(i+1).padStart(2,'0')}</div>
+    <h3>${l.title}</h3><p>${l.card}</p><div class="go">Open Lesson →</div>`;
+  d.onclick=()=>{openLesson(i);show('lessons');};
+  og.appendChild(d);
+});
+
+/* Lessons */
+let cur=0;
+function openLesson(i){
+  cur=i;const l=LESSONS[i];
+  document.getElementById('l-tag').textContent='Lesson '+String(i+1).padStart(2,'0');
+  document.getElementById('l-eyebrow').textContent=l.eyebrow;
+  document.getElementById('l-title').innerHTML=l.title;
+  document.getElementById('l-lede').textContent=l.lede;
+  document.getElementById('l-diagram').innerHTML=l.svg;
+  document.getElementById('l-points').innerHTML=l.points.map(p=>'<li>'+p+'</li>').join('');
+  document.getElementById('l-hook').textContent=l.hook;
+  document.getElementById('l-prev').disabled=i===0;
+  document.getElementById('l-next').disabled=i===LESSONS.length-1;
+}
+document.getElementById('l-prev').onclick=()=>{if(cur>0)openLesson(cur-1);document.querySelector('main').scrollTo(0,0);window.scrollTo(0,0);};
+document.getElementById('l-next').onclick=()=>{if(cur<LESSONS.length-1)openLesson(cur+1);document.querySelector('main').scrollTo(0,0);window.scrollTo(0,0);};
+openLesson(0);
+
+/* Flashcards */
+let fcFilter='All',fcOrder=CARDS.map((_,i)=>i);
+const fcFilters=document.getElementById('fc-filters');
+['All',...TOPICS].forEach(t=>{
+  const b=document.createElement('button');b.textContent=t;if(t==='All')b.classList.add('active');
+  b.onclick=()=>{fcFilter=t;[...fcFilters.children].forEach(x=>x.classList.toggle('active',x===b));renderCards();};
+  fcFilters.appendChild(b);
+});
+function renderCards(){
+  const grid=document.getElementById('fc-grid');grid.innerHTML='';
+  const list=fcOrder.map(i=>CARDS[i]).filter(c=>fcFilter==='All'||c.t===fcFilter);
+  document.getElementById('fc-count').textContent=list.length+' cards';
+  list.forEach(c=>{
+    const f=document.createElement('div');f.className='flip';
+    f.innerHTML=`<div class="flip-in">
+      <div class="face front"><div class="fc-topic">${c.t}</div><div class="q">${c.q}</div><div class="fc-hint">tap to reveal</div></div>
+      <div class="face back"><div class="fc-topic">${c.t}</div><div class="a">${c.a}</div></div>
+    </div>`;
+    f.onclick=()=>f.classList.toggle('flipped');
+    grid.appendChild(f);
+  });
+}
+document.getElementById('fc-shuffle').onclick=()=>{for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}renderCards();};
+document.getElementById('fc-reset').onclick=()=>{fcOrder=CARDS.map((_,i)=>i);fcFilter='All';[...fcFilters.children].forEach((x,i)=>x.classList.toggle('active',i===0));renderCards();};
+renderCards();
+
+/* MCQ */
+let answered={},score=0;
+const quiz=document.getElementById('quiz');
+function renderQuiz(){
+  quiz.innerHTML='';answered={};score=0;updateScore();
+  QUIZ.forEach((q,qi)=>{
+    const block=document.createElement('div');block.className='q-block';
+    const opts=q.o.map((o,oi)=>`<div class="opt" data-q="${qi}" data-o="${oi}"><span class="k">${'ABCD'[oi]}</span><span>${o}</span></div>`).join('');
+    block.innerHTML=`<div class="q-num">Question ${String(qi+1).padStart(2,'0')}</div>
+      <div class="q-text">${q.q}</div><div class="opts">${opts}</div>
+      <div class="explain" id="exp-${qi}">${q.e}</div>`;
+    quiz.appendChild(block);
+  });
+  quiz.querySelectorAll('.opt').forEach(opt=>{
+    opt.onclick=()=>{
+      const qi=+opt.dataset.q,oi=+opt.dataset.o;
+      if(answered[qi]!==undefined)return;
+      answered[qi]=oi;const correct=QUIZ[qi].c;
+      const block=opt.closest('.q-block');
+      block.querySelectorAll('.opt').forEach(o=>{
+        o.classList.add('locked');
+        const ooi=+o.dataset.o;
+        if(ooi===correct)o.classList.add('correct');
+        else if(ooi===oi)o.classList.add('wrong');
+      });
+      document.getElementById('exp-'+qi).classList.add('show');
+      if(oi===correct)score++;
+      updateScore();
+    };
+  });
+}
+function updateScore(){document.getElementById('score-n').textContent=score+' / '+QUIZ.length;}
+document.getElementById('quiz-reset').onclick=renderQuiz;
+renderQuiz();
+</script>
+</body>
+</html>
